@@ -1,0 +1,14 @@
+.label {
+	-fx-text-fill: cyan;
+	-fx-font-family: 'Monaco';
+}
+
+.text-field
+{
+	-fx-text-fill: magenta;
+}
+
+.button
+{
+	-fx-text-fill: red;
+}

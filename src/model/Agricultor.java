@@ -48,5 +48,12 @@ public class Agricultor {
 	public String getCedula() {
 		return cedula;
 	}
+
+	@Override
+	public String toString() {
+		return "Agricultor [cedula=" + cedula + ", nombre=" + nombre + ", genero=" + genero + "]";
+	}
+	
+	
 	
 }
