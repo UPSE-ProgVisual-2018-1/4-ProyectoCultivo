@@ -13,7 +13,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
  fx:controller="controllers.ControllerAgricultor" stylesheets="/style.css">
-			<Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Agricultor" />
+			<Label styleClass="titulo" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Agricultor" />
 	<GridPane>
 		<children>
 			<Label text="Cedula" GridPane.rowIndex="1" />

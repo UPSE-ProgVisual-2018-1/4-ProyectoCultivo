@@ -1,7 +1,19 @@
+#txtCedula
+{
+	-fx-text-fill: blue;
+}
+
 .label {
 	-fx-text-fill: cyan;
 	-fx-font-family: 'Monaco';
 }
+
+.titulo
+{
+	-fx-font-size: 40px;
+	-fx-font-weight: bolder;
+	-fx-text-fill: orange;
+} 
 
 .text-field
 {
@@ -12,3 +24,7 @@
 {
 	-fx-text-fill: red;
 }
+
+
+
+
