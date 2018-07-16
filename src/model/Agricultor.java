@@ -51,7 +51,7 @@ public class Agricultor {
 
 	@Override
 	public String toString() {
-		return "Agricultor [cedula=" + cedula + ", nombre=" + nombre + ", genero=" + genero + "]";
+		return cedula + " - " + nombre;
 	}
 	
 	
