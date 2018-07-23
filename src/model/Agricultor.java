@@ -54,6 +54,10 @@ public class Agricultor {
 		return cedula + " - " + nombre;
 	}
 	
+	public String imprimirCompleto()
+	{
+		return "nombre: " + this.nombre + ", genero:" + this.getGenero();
+	}
 	
 	
 }

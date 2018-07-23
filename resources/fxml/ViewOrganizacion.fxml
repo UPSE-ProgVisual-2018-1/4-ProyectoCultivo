@@ -14,7 +14,7 @@
 
 <VBox spacing="5.0" stylesheets="/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerOrganizacion">
 	<Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" styleClass="titulo" text="Organizacion" />
-	<GridPane VBox.vgrow="SOMETIMES">
+	<GridPane fx:id="gridDatos" VBox.vgrow="SOMETIMES">
       <children>
          <Label text="id" GridPane.columnIndex="1" />
          <TextField fx:id="txtId" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" />
@@ -37,9 +37,9 @@
    <MediaView fx:id="mvVideoOrganizacion" fitHeight="200.0" fitWidth="300.0" visible="false" VBox.vgrow="SOMETIMES" />
    <HBox alignment="CENTER" prefHeight="9.0" prefWidth="300.0" spacing="5.0">
       <children>
-         <Button fx:id="btnPlayPause" mnemonicParsing="false" text="Play" />
+         <Button fx:id="btnPlayPause" disable="true" mnemonicParsing="false" text="Play" />
          
-         <Button mnemonicParsing="false" onAction="#stopVideo" text="Stop" />
+         <Button disable="true" mnemonicParsing="false" onAction="#stopVideo" text="Stop" />
       </children>
    </HBox>
    <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Lista Agricultores" textAlignment="CENTER" />

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx/8.0.111"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.ControllerTerreno" stylesheets="/style.css">
+	<!-- TODO Add Nodes -->
+	<Label alignment="CENTER" contentDisplay="CENTER"
+		maxWidth="1.7976931348623157E308" styleClass="titulo" text="Terreno" />
+	<GridPane>
+		<children>
+			<Label text="id" />
+			<TextField GridPane.columnIndex="2" />
+			<Button mnemonicParsing="false" text="Cargar"
+				GridPane.columnIndex="3" />
+			<Label layoutX="10.0" layoutY="15.0" text="Provincia"
+				GridPane.rowIndex="1" />
+			<Label text="Canton" GridPane.rowIndex="2" />
+			<Label text="Parroquia" GridPane.rowIndex="3" />
+			<Label text="Localidad" GridPane.rowIndex="4" />
+			<Label text="Coordenada X" GridPane.rowIndex="5" />
+			<Label text="Coordenada Y" GridPane.rowIndex="6" />
+			<Label text="Coordenada Z" GridPane.rowIndex="7" />
+			<Label text="Dueno" GridPane.rowIndex="8" />
+			<Label text="Topografia" GridPane.rowIndex="9" />
+			<Label text="Tipo Analisis de Suelo" GridPane.rowIndex="10" />
+			<Label text="Tipo Riego" GridPane.rowIndex="11" />
+			<Label text="Riego Disponible" GridPane.rowIndex="12" />
+			<Label text="Seguro Agricola" GridPane.rowIndex="13" />
+			<CheckBox fx:id="cbxSeguroAgricola" mnemonicParsing="false"
+				text="CheckBox" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+			<Label text="Tennencia de Tierra" GridPane.rowIndex="14" />
+		</children>
+		<columnConstraints>
+			<ColumnConstraints />
+			<ColumnConstraints />
+			<ColumnConstraints />
+			<ColumnConstraints />
+		</columnConstraints>
+		<rowConstraints>
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+		</rowConstraints>
+	</GridPane>
+	<HBox prefHeight="0.0" prefWidth="279.0" spacing="3.0">
+		<children>
+			<Button mnemonicParsing="false" text="Guardar"
+				onAction="#guardar" />
+			<Button mnemonicParsing="false" text="Limpiar" />
+			<Button mnemonicParsing="false" text="Borrar" />
+			<Button mnemonicParsing="false" text="Cancelar"
+				onAction="#cancelar" />
+		</children>
+	</HBox>
+</VBox>
