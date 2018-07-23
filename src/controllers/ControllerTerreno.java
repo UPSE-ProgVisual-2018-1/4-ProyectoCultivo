@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 
-public class ControllerTerreno implements Initializable{
+public class ControllerTerreno implements Initializable, ContollerBaseVistaFormulario{
 	@FXML CheckBox cbxSeguroAgricola;
 
 	@Override
@@ -25,6 +25,18 @@ public class ControllerTerreno implements Initializable{
 	
 	public void cancelar()
 	{
+		
+	}
+
+	@Override
+	public void limpiar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrar() {
+		// TODO Auto-generated method stub
 		
 	}
 }

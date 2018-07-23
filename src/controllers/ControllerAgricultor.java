@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 import model.Agricultor;
 import model.Genero;
 
-public class ControllerAgricultor {
+public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 
 	@FXML TextField txtCedula;
 	@FXML TextField txtNombre;
@@ -77,5 +77,17 @@ public class ControllerAgricultor {
 	{
 		System.out.println("salir");
 		System.exit(0);
+	}
+
+	@Override
+	public void limpiar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrar() {
+		// TODO Auto-generated method stub
+		
 	}
 }

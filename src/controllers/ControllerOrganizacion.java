@@ -22,7 +22,7 @@ import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.media.MediaView;
 import model.Agricultor;
 
-public class ControllerOrganizacion implements Initializable {
+public class ControllerOrganizacion implements Initializable, ContollerBaseVistaFormulario {
 
 	@FXML ListView<Agricultor> lstAgricultores;
 	@FXML MediaView mvVideoOrganizacion;
@@ -136,6 +136,18 @@ public class ControllerOrganizacion implements Initializable {
 				}
 			}
 		});
+	}
+
+	@Override
+	public void limpiar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrar() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -62,8 +62,8 @@
    <HBox prefHeight="0.0" prefWidth="279.0" spacing="3.0">
       <children>
          <Button mnemonicParsing="false" onAction="#guardar" text="Guardar" />
-         <Button mnemonicParsing="false" text="Limpiar" />
-         <Button mnemonicParsing="false" text="Borrar" />
+		 <Button mnemonicParsing="false" text="Limpiar" onAction="#limpiar" />
+		 <Button mnemonicParsing="false" text="Borrar" onAction="#borrar" />
          <Button mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
       </children>
    </HBox>

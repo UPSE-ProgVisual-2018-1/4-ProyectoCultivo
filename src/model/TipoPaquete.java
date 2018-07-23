@@ -1,0 +1,5 @@
+package model;
+
+public enum TipoPaquete {
+	SEMILLA_DOS_SACOS_FERTILIZANTE, MALTERA, DOS_SACOS_FERTILIZANTE;
+}

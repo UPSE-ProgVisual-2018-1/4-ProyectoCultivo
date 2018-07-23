@@ -69,8 +69,8 @@
 		<children>
 			<Button mnemonicParsing="false" text="Guardar"
 				onAction="#guardar" />
-			<Button mnemonicParsing="false" text="Limpiar" />
-			<Button mnemonicParsing="false" text="Borrar" />
+			<Button mnemonicParsing="false" text="Limpiar" onAction="#limpiar" />
+			<Button mnemonicParsing="false" text="Borrar" onAction="#borrar" />
 			<Button mnemonicParsing="false" text="Cancelar"
 				onAction="#cancelar" />
 		</children>
