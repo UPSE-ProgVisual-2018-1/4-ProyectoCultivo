@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<?import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory?>
+
+<VBox prefHeight="233.0" prefWidth="380.0" stylesheets="/style.css"
+	xmlns="http://javafx.com/javafx/8.0.111"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controllers.ControllerCosecha">
+	<Label alignment="CENTER" contentDisplay="CENTER"
+		maxWidth="1.7976931348623157E308" styleClass="titulo" text="Cosecha" />
+	<GridPane>
+		<children>
+			<Label text="id" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+			<TextField fx:id="txtId" GridPane.columnIndex="1"
+				GridPane.rowIndex="0" />
+			<Label text="Fecha" GridPane.rowIndex="1" />
+			<DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
+			<Label text="Hectareas Cosechadas" GridPane.rowIndex="2" />
+<!-- 			<TextField GridPane.columnIndex="1" GridPane.rowIndex="2" /> -->
+			<Spinner fx:id="spnHectareasCosechadas" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+				<valueFactory>
+					<SpinnerValueFactory.DoubleSpinnerValueFactory amountToStepBy="0.5" min="1" max="1000" />
+				</valueFactory>
+			</Spinner>
+			<Label text="Prodcuccion Total" GridPane.rowIndex="3" />
+			<Label text="Produccion Total TM" GridPane.rowIndex="4" />
+			<Label text="Rendimiento Hectarea Prom" GridPane.rowIndex="5" />
+			<Label text="Humedad %" GridPane.rowIndex="6" />
+			<TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+			<TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+			<TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+			<Spinner fx:id="spnHumedadPorCien" maxWidth="1.7976931348623157E308" prefHeight="27.0"
+				prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+				<valueFactory>
+					<SpinnerValueFactory.IntegerSpinnerValueFactory
+						min="0" max="100" />
+				</valueFactory>
+			</Spinner>
+			<Label text="Impureza %" GridPane.rowIndex="7" />
+			<Spinner fx:id="spnImpurezaPorCien"  maxWidth="1.7976931348623157E308"
+				GridPane.columnIndex="1" GridPane.rowIndex="7" >
+								<valueFactory>
+					<SpinnerValueFactory.IntegerSpinnerValueFactory
+						min="0" max="100" amountToStepBy="2" />
+				</valueFactory>
+			</Spinner>	
+
+		</children>
+		<columnConstraints>
+			<ColumnConstraints />
+			<ColumnConstraints />
+		</columnConstraints>
+		<rowConstraints>
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+			<RowConstraints />
+		</rowConstraints>
+	</GridPane>
+	<HBox prefHeight="0.0" prefWidth="279.0" spacing="3.0">
+		<children>
+			<Button mnemonicParsing="false" onAction="#guardar"
+				text="Guardar" />
+			<Button mnemonicParsing="false" onAction="#limpiar"
+				text="Limpiar" />
+			<Button mnemonicParsing="false" onAction="#borrar"
+				text="Borrar" />
+			<Button mnemonicParsing="false" onAction="#cancelar"
+				text="Cancelar" />
+		</children>
+	</HBox>
+</VBox>
