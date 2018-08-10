@@ -25,6 +25,20 @@
 	-fx-text-fill: red;
 }
 
+.menu .label {
+    -fx-text-fill: blue;
+}
 
+.menu-item .label {
+    -fx-text-fill: black;
+}
+
+#miIdiomaIngles > .label{
+    -fx-graphic: url("/uk.ico");
+}
+
+#miIdiomaEspanol > .label{
+    -fx-graphic: url("/ecuador-flag-256.png");
+}
 
 

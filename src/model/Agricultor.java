@@ -59,5 +59,21 @@ public class Agricultor {
 		return "nombre: " + this.nombre + ", genero:" + this.getGenero();
 	}
 	
-	
+//	public class GrupoFamiliar
+//	{
+//		private int numeroHijos;
+//		private boolean pareja;
+//		public int getNumeroHijos() {
+//			return numeroHijos;
+//		}
+//		public void setNumeroHijos(int numeroHijos) {
+//			this.numeroHijos = numeroHijos;
+//		}
+//		public boolean isPareja() {
+//			return pareja;
+//		}
+//		public void setPareja(boolean pareja) {
+//			this.pareja = pareja;
+//		}
+//	}
 }

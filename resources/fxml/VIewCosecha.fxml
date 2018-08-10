@@ -24,6 +24,8 @@
 			<Label text="id" GridPane.columnIndex="0" GridPane.rowIndex="0" />
 			<TextField fx:id="txtId" GridPane.columnIndex="1"
 				GridPane.rowIndex="0" />
+			<Button fx:id="btnBuscar" GridPane.columnIndex="2"
+				GridPane.rowIndex="0" text="Buscar" />
 			<Label text="Fecha" GridPane.rowIndex="1" />
 			<DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
 			<Label text="Hectareas Cosechadas" GridPane.rowIndex="2" />

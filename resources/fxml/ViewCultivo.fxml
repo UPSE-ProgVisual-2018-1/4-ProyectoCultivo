@@ -1,51 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="179.0" prefWidth="324.0" stylesheets="/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerCultivo">
+<VBox prefHeight="179.0" prefWidth="324.0" spacing="5.0" stylesheets="/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ControllerCultivo">
+   <MenuBar>
+     <menus>
+         <Menu fx:id="menuUsuario" mnemonicParsing="false" text="Usuario">
+           <items>
+             <MenuItem mnemonicParsing="false" text="Informacion" />
+               <MenuItem mnemonicParsing="false" text="Cambiar" />
+               <MenuItem mnemonicParsing="false" text="Salir" />
+           </items>
+         </Menu>
+       <Menu mnemonicParsing="false" text="Archivo">
+         <items>
+               <MenuItem mnemonicParsing="false" text="Cargar" />
+               <MenuItem mnemonicParsing="false" text="Guardar" />
+               <Menu mnemonicParsing="false" text="Exportar">
+                 <items>
+                   <MenuItem mnemonicParsing="false" text="PDF" />
+                     <MenuItem mnemonicParsing="false" text="JSON" />
+                 </items>
+               </Menu>
+           	   <MenuItem mnemonicParsing="false" onAction="#salirPantalla" text="Salir Pantalla" />
+           	   <MenuItem mnemonicParsing="false" onAction="#salirSistema" text="Salir Sistema" />
+         </items>
+       </Menu>
+       <Menu mnemonicParsing="false" text="Opciones">
+         <items>
+           <MenuItem mnemonicParsing="false" text="Vista Previa" />
+               <MenuItem mnemonicParsing="false" text="Imprimir" />
+         </items>
+       </Menu>
+       <Menu mnemonicParsing="false" text="Ayuda">
+         <items>
+               <CheckMenuItem fx:id="cmiTooltipMenu" mnemonicParsing="false" onAction="#toggleToolTip" text="Ver Tips (Tooltip)">
+                  <accelerator>
+                     <KeyCodeCombination alt="UP" code="H" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+               </CheckMenuItem>
+               <SeparatorMenuItem mnemonicParsing="false" />
+           <MenuItem mnemonicParsing="false" text="Ver Documentacion" />
+               <MenuItem mnemonicParsing="false" text="Acerca" />
+         </items>
+       </Menu>
+     </menus>
+   </MenuBar>
 	<!-- TODO Add Nodes -->
 	<Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" styleClass="titulo" text="Cultivo" />
-	<GridPane>
+	<GridPane hgap="3.0" vgap="3.0">
 		<children>
-			<Label text="id" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-			<TextField fx:id="txtId" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-			<Label text="Hectareas Cultivadas" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+			<Label fx:id="lblId" text="id" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+			<TextField fx:id="txtId" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="0" />
+			<Label fx:id="lblHectareasCultivadas" text="Hectareas Cultivadas" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 			<TextField fx:id="txtHectareasCultivadas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-			<Label text="Especie" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+			<Label fx:id="lblEspecie" text="Especie" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 			<ChoiceBox fx:id="chbEspecie" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-			<Label text="Semilla" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+			<Label fx:id="lblSemilla" text="Semilla" GridPane.columnIndex="0" GridPane.rowIndex="3" />
 			<ChoiceBox fx:id="chbSemilla" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 			<Label text="Tipo Paquete" GridPane.columnIndex="0" GridPane.rowIndex="4" />
 			<ChoiceBox fx:id="chbPaquete" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 			<Label text="Fecha Siembra" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-			<DatePicker fx:id="dateSiembra" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+			<DatePicker fx:id="dateSiembra" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          <Label text="Labores Control" GridPane.rowIndex="6" />
          <Label text="Aplicacion Urea" GridPane.rowIndex="7" />
          <CheckBox contentDisplay="RIGHT" mnemonicParsing="false" text="Marque para si" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          <Label text="Fecha 30 Dias" GridPane.rowIndex="8" />
          <Label text="Fecha 45 Dias" GridPane.rowIndex="9" />
          <Label text="Fecha 60 Dias" GridPane.rowIndex="10" />
-         <Button text="Recalcular Fechas" GridPane.rowIndex="11" GridPane.columnSpan="3" onAction="#calcularFechasAutomaticas" />
-         <DatePicker  fx:id="dateSiembra30Dias" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-         <DatePicker  fx:id="dateSiembra45Dias" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-         <DatePicker  fx:id="dateSiembra60Dias" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+         <Button maxWidth="1.7976931348623157E308" onAction="#calcularFechasAutomaticas" text="Recalcular Fechas" GridPane.columnSpan="3" GridPane.rowIndex="11" />
+         <DatePicker fx:id="dateSiembra30Dias" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         <DatePicker fx:id="dateSiembra45Dias" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+         <DatePicker fx:id="dateSiembra60Dias" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="10" />
          <Label text="Costo Produccion" GridPane.rowIndex="13" />
-         <Label  text="Progreso del Cultivo" GridPane.rowIndex="14" />
+         <Label text="Progreso del Cultivo" GridPane.rowIndex="14" />
          <ProgressBar fx:id="pbarProgresoCultivo" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-         <Button text="Calcular Progreso Cultivo" GridPane.columnIndex="2" GridPane.rowIndex="14" onAction="#calcularProgresoCultivo"/>
+         <Button onAction="#calcularProgresoCultivo" text="Calcular Progreso Cultivo" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cargar" GridPane.columnIndex="2" />
+         <MenuButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Idioma" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
+           <items>
+             <MenuItem fx:id="miIdiomaIngles" mnemonicParsing="false" text="English" onAction="#traducirControlesIngles" />
+             <MenuItem fx:id="miIdiomaEspanol" mnemonicParsing="false" text="Español" onAction="#traducirControlesEspanol" />
+           </items>
+         </MenuButton>
 		</children>
       <columnConstraints>
+         <ColumnConstraints />
          <ColumnConstraints />
          <ColumnConstraints />
       </columnConstraints>
@@ -63,7 +122,15 @@
          <RowConstraints />
          <RowConstraints />
          <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
       </rowConstraints>
+      <VBox.margin>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </VBox.margin>
+      <padding>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </padding>
 	</GridPane>
 	<HBox alignment="CENTER" prefHeight="0.0" prefWidth="279.0" spacing="3.0">
 		<children>
