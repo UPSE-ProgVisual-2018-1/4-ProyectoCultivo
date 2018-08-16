@@ -50,8 +50,10 @@
 		<children>
 			<Label text="Cedula" GridPane.rowIndex="1" />
 			<TextField fx:id="txtCedula" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+			<Button text="Buscar" fx:id="btnBuscar" GridPane.columnIndex="2" GridPane.rowIndex="1" />
 			<Label text="Nombre Completo" GridPane.rowIndex="2" />
 			<TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+			<Button text="BuscarPorNombre" fx:id="btnBuscarNombre" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 			<Label text="Genero" GridPane.rowIndex="3" />
 <!-- 			<ChoiceBox fx:id="chbGenero" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" /> -->
 			

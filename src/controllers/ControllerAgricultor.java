@@ -2,7 +2,10 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -11,6 +14,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import model.Agricultor;
 import model.Genero;
+import testMocker.ObjectMocker;
 
 public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 
@@ -24,6 +28,8 @@ public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 	@FXML RadioButton rbFemenino;
 	@FXML RadioButton rbOtro;
 	@FXML RadioButton rbNoDigo;
+	@FXML Button btnBuscar;
+	@FXML Button btnBuscarNombre;
 	
 	private Agricultor tempAgricultor;
 	
@@ -39,7 +45,41 @@ public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 		rbOpcion1.setSelected(true);
 		gridDatos.add(rbOpcion1, 1, 6);
 		gridDatos.add(rbOpcion2, 1, 7);
+		ObjectMocker.mockearListaAgricultores();
 		
+		btnBuscar.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				Agricultor agricultorEncontrado = buscarPorCedula(txtCedula.getText());
+				if(agricultorEncontrado!=null)
+				{
+					cargar(agricultorEncontrado);
+				}else {
+					System.err.println("Opps. No encontrado.");
+					limpiar();
+				}
+				
+			}
+
+		});
+		
+		btnBuscarNombre.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				Agricultor agricultorEncontrado = buscarPorNombre(txtNombre.getText());
+				if(agricultorEncontrado!=null)
+				{
+					cargar(agricultorEncontrado);
+				}else {
+					System.err.println("Opps. No encontrado.");
+					limpiar();
+				}
+				
+			}
+
+		});
 	}
 	
 	public void guardar()
@@ -71,6 +111,74 @@ public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 		tempAgricultor.setGenero(genero);
 		System.out.println("Objeto Agricultor Lleno!");
 		System.out.println(tempAgricultor.imprimirCompleto());
+		
+		ObjectMocker.listaAgricultoresMockeados.add(tempAgricultor);
+		System.out.println("Ahora la lista de agricultores es:");
+		System.out.println(ObjectMocker.listaAgricultoresMockeados);
+	}
+	
+	private void cargar(Agricultor agricultorEncontrado) {
+		txtCedula.setText(agricultorEncontrado.getCedula());
+		txtNombre.setText(agricultorEncontrado.getNombre());
+		txtTelefono.setText(agricultorEncontrado.getTelefono());
+		
+		switch (agricultorEncontrado.getGenero()) {
+		case MASCULINO:
+			rbMasculino.setSelected(true);
+			break;
+		case FEMENINO:
+			rbFemenino.setSelected(true);
+			break;
+		case OTRO:
+			rbOtro.setSelected(true);
+			break;
+		case PREFIERO_NO_DECIR:
+			rbNoDigo.setSelected(true);
+			break;
+
+		default:
+			rbNoDigo.setSelected(true);
+			break;
+		}
+		
+	}
+	
+	private Agricultor buscarPorCedula(String cedula)
+	{
+		Agricultor agricultorBusqueda = null;
+		System.out.println("Cedula a Buscar:" + cedula);
+		for(Agricultor a: ObjectMocker.listaAgricultoresMockeados)
+		{
+			
+			if(a.getCedula().equals(cedula))
+			{
+				agricultorBusqueda = a;
+				System.out.println("Agricultor Encontrado: " + a );
+				break;
+			}
+		}
+		
+		return agricultorBusqueda;
+		
+	}
+	
+	private Agricultor buscarPorNombre(String nombre)
+	{
+		Agricultor agricultorBusqueda = null;
+		System.out.println("Nombre a Buscar:" + nombre);
+		for(Agricultor a: ObjectMocker.listaAgricultoresMockeados)
+		{
+			
+			if(a.getNombre().equals(nombre))
+			{
+				agricultorBusqueda = a;
+				System.out.println("Agricultor Encontrado: " + a );
+				break;
+			}
+		}
+		
+		return agricultorBusqueda;
+		
 	}
 	
 	public void cancelar()
@@ -81,8 +189,10 @@ public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 
 	@Override
 	public void limpiar() {
-		// TODO Auto-generated method stub
-		
+		txtCedula.clear();
+		txtNombre.clear();
+		txtTelefono.clear();
+		tggGenero.selectToggle(rbNoDigo);
 	}
 
 	@Override
