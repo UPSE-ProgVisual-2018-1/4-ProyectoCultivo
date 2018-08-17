@@ -25,19 +25,19 @@ public class ControllerBuscadorAgricultor implements Initializable {
 	@FXML HBox boxDataBusqueda;
 	@FXML Button btnBuscar;
 	@FXML ListView<Agricultor> lstResultados;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ObjectMocker.mockearListaAgricultores();
 		List<String> criterios = crearCriterios();
 		ObservableList<String> listaObservableCriterios = FXCollections.observableArrayList(criterios);
 		chbCriterioBusquedaAgricultor.setItems(listaObservableCriterios);
-		
+
 		chbCriterioBusquedaAgricultor.setOnAction( e -> cargarControlesPorCriterio());
-		
-		
+
+
 	}
-	
+
 	private void cargarControlesPorCriterio()
 	{
 		switch (chbCriterioBusquedaAgricultor.getSelectionModel().getSelectedItem()) {
@@ -49,9 +49,9 @@ public class ControllerBuscadorAgricultor implements Initializable {
 			boxDataBusqueda.getChildren().add(txtNombreAgricultor);
 			btnBuscar.setOnAction(e -> { 
 				List<Agricultor> listaAgricultoresEncontrados 
-					= buscarPorNombre(txtNombreAgricultor.getText());
+				= buscarPorNombre(txtNombreAgricultor.getText());
 				ObservableList<Agricultor> listaObsevableAgricultor 
-					= FXCollections.observableArrayList(listaAgricultoresEncontrados);
+				= FXCollections.observableArrayList(listaAgricultoresEncontrados);
 				lstResultados.setItems(listaObsevableAgricultor);
 			});
 			break;
@@ -77,9 +77,9 @@ public class ControllerBuscadorAgricultor implements Initializable {
 			boxDataBusqueda.getChildren().add(chbGeneroABuscar);
 			btnBuscar.setOnAction(e -> { 
 				List<Agricultor> listaAgricultoresEncontrados 
-					= buscarPorGenero(chbGeneroABuscar.getSelectionModel().getSelectedItem());
+				= buscarPorGenero(chbGeneroABuscar.getSelectionModel().getSelectedItem());
 				ObservableList<Agricultor> listaObsevableAgricultor 
-					= FXCollections.observableArrayList(listaAgricultoresEncontrados);
+				= FXCollections.observableArrayList(listaAgricultoresEncontrados);
 				lstResultados.setItems(listaObsevableAgricultor);
 			});
 			break;	
@@ -101,15 +101,6 @@ public class ControllerBuscadorAgricultor implements Initializable {
 		return listaAgricultoresEncontrados;
 	}
 
-	private List<String> crearCriterios() {
-		List<String> criterios = new ArrayList<String>();
-		criterios.add("Nombre");
-		criterios.add("Cedula");
-		criterios.add("Telefono");
-		criterios.add("Genero");
-		return criterios;
-	}
-	
 	private List<Agricultor> buscarPorNombre(String nombre)
 	{
 		List<Agricultor> listaAgricultoresEncontrados = new ArrayList<Agricultor>();
@@ -122,5 +113,14 @@ public class ControllerBuscadorAgricultor implements Initializable {
 			System.out.println(a);
 		}
 		return listaAgricultoresEncontrados;
+	}
+
+	private List<String> crearCriterios() {
+		List<String> criterios = new ArrayList<String>();
+		criterios.add("Nombre");
+		criterios.add("Cedula");
+		criterios.add("Telefono");
+		criterios.add("Genero");
+		return criterios;
 	}
 }
