@@ -1,5 +1,7 @@
 package controllers;
 
+import java.time.LocalDate;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -180,6 +182,8 @@ public class ControllerAgricultor implements ContollerBaseVistaFormulario{
 		return agricultorBusqueda;
 		
 	}
+	
+	
 	
 	public void cancelar()
 	{

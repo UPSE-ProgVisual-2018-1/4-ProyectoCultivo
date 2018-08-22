@@ -1,10 +1,13 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Agricultor {
 	private final String cedula;
 	private String nombre;
 	private String telefono;
 	private Genero genero;
+	private LocalDate fechaNacimiento;
 	
 	public Agricultor(String cedula, String nombre)
 	{
@@ -49,6 +52,14 @@ public class Agricultor {
 		return cedula;
 	}
 
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
 	@Override
 	public String toString() {
 		return cedula + " - " + nombre;

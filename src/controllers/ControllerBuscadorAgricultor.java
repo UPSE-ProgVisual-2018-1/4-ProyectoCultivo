@@ -1,16 +1,20 @@
 package controllers;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import helpers.Criterio;
+import helpers.HelperBuscadorAgricultor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -48,11 +52,11 @@ public class ControllerBuscadorAgricultor implements Initializable {
 			boxDataBusqueda.getChildren().add(labelNombre);
 			boxDataBusqueda.getChildren().add(txtNombreAgricultor);
 			btnBuscar.setOnAction(e -> { 
-				List<Agricultor> listaAgricultoresEncontrados 
-				= buscarPorNombre(txtNombreAgricultor.getText());
-				ObservableList<Agricultor> listaObsevableAgricultor 
-				= FXCollections.observableArrayList(listaAgricultoresEncontrados);
-				lstResultados.setItems(listaObsevableAgricultor);
+//				List<Agricultor> listaAgricultoresEncontrados 
+//				= buscarPorNombre(txtNombreAgricultor.getText());
+//				ObservableList<Agricultor> listaObsevableAgricultor 
+//				= FXCollections.observableArrayList(listaAgricultoresEncontrados);
+//				lstResultados.setItems(listaObsevableAgricultor);
 			});
 			break;
 		case "Cedula":
@@ -77,43 +81,103 @@ public class ControllerBuscadorAgricultor implements Initializable {
 			boxDataBusqueda.getChildren().add(chbGeneroABuscar);
 			btnBuscar.setOnAction(e -> { 
 				List<Agricultor> listaAgricultoresEncontrados 
-				= buscarPorGenero(chbGeneroABuscar.getSelectionModel().getSelectedItem());
+				= HelperBuscadorAgricultor.buscarAgricultorPorCriterio(ObjectMocker.listaAgricultoresMockeados,
+						new Criterio() {
+							
+							@Override
+							public boolean verificar(Agricultor a) {
+								if(a.getGenero()==chbGeneroABuscar.getValue()) {
+									return true;
+								}else {
+									return false;
+								}
+							}
+						});
 				ObservableList<Agricultor> listaObsevableAgricultor 
 				= FXCollections.observableArrayList(listaAgricultoresEncontrados);
 				lstResultados.setItems(listaObsevableAgricultor);
 			});
-			break;	
+			break;
+		case "Rango Fechas Nacimiento":
+			boxDataBusqueda.getChildren().clear();
+			Label lblFechaInicio = new Label("Fecha Inicio");
+			DatePicker dateFechaInicio = new DatePicker();
+			Label lblFechaFin = new Label("Fecha Fin");
+			DatePicker dateFechaFin = new DatePicker();
+			boxDataBusqueda.getChildren().add(lblFechaInicio);
+			boxDataBusqueda.getChildren().add(dateFechaInicio);
+			boxDataBusqueda.getChildren().add(lblFechaFin);
+			boxDataBusqueda.getChildren().add(dateFechaFin);
+			btnBuscar.setOnAction(e -> {
+				List<Agricultor> listaAgricultoresEncontrados 
+				= HelperBuscadorAgricultor.buscarAgricultorPorCriterio(ObjectMocker.listaAgricultoresMockeados, 
+						a -> {
+							if(a.getFechaNacimiento()!=null 
+									&& a.getFechaNacimiento().isBefore(dateFechaFin.getValue())
+									&& a.getFechaNacimiento().isAfter(dateFechaInicio.getValue()))
+							{
+								return true;
+								}
+							else {
+								return false;
+							}
+						} );
+				ObservableList<Agricultor> listaObsevableAgricultor 
+				= FXCollections.observableArrayList(listaAgricultoresEncontrados);
+				lstResultados.setItems(listaObsevableAgricultor);
+			});
+			break;
 		default:
 			break;
 		}
 	}
 
-	private List<Agricultor> buscarPorGenero(Genero genero) {
-		List<Agricultor> listaAgricultoresEncontrados = new ArrayList<Agricultor>();
-		for(Agricultor a:ObjectMocker.listaAgricultoresMockeados)
-		{
-			if(a.getGenero().equals(genero))
-			{
-				listaAgricultoresEncontrados.add(a);
-			}
-			System.out.println(a);
-		}
-		return listaAgricultoresEncontrados;
-	}
-
-	private List<Agricultor> buscarPorNombre(String nombre)
-	{
-		List<Agricultor> listaAgricultoresEncontrados = new ArrayList<Agricultor>();
-		for(Agricultor a:ObjectMocker.listaAgricultoresMockeados)
-		{
-			if(a.getNombre().contains(nombre))
-			{
-				listaAgricultoresEncontrados.add(a);
-			}
-			System.out.println(a);
-		}
-		return listaAgricultoresEncontrados;
-	}
+//	private List<Agricultor> buscarPorGenero(Genero genero) {
+//		List<Agricultor> listaAgricultoresEncontrados = new ArrayList<Agricultor>();
+//		for(Agricultor a:ObjectMocker.listaAgricultoresMockeados)
+//		{
+//			if(a.getGenero().equals(genero))
+//			{
+//				listaAgricultoresEncontrados.add(a);
+//			}
+//			System.out.println(a);
+//		}
+//		return listaAgricultoresEncontrados;
+//	}
+//
+//	private List<Agricultor> buscarPorNombre(String nombre)
+//	{
+//		List<Agricultor> listaAgricultoresEncontrados = new ArrayList<Agricultor>();
+//		for(Agricultor a:ObjectMocker.listaAgricultoresMockeados)
+//		{
+//			if(a.getNombre().contains(nombre))
+//			{
+//				listaAgricultoresEncontrados.add(a);
+//			}
+//			System.out.println(a);
+//		}
+//		return listaAgricultoresEncontrados;
+//	}
+//	
+//	private List<Agricultor> buscarPorFechas(LocalDate fechaInicio, LocalDate fechaFin)
+//	{
+//		List<Agricultor> listaAgricultoresEncontrados = new ArrayList<Agricultor>();
+//		
+//		System.out.println("Buscando entre:" + fechaInicio + " y " + fechaFin);
+//		for(Agricultor a: ObjectMocker.listaAgricultoresMockeados)
+//		{
+//			
+//			if(a.getFechaNacimiento()!=null && a.getFechaNacimiento().isAfter(fechaInicio) 
+//					&&  a.getFechaNacimiento().isBefore(fechaFin))
+//			{
+//				listaAgricultoresEncontrados.add(a);
+//				System.out.println("Agricultor Encontrado: " + a );
+//			}
+//		}
+//		
+//		return listaAgricultoresEncontrados;
+//		
+//	}
 
 	private List<String> crearCriterios() {
 		List<String> criterios = new ArrayList<String>();
@@ -121,6 +185,7 @@ public class ControllerBuscadorAgricultor implements Initializable {
 		criterios.add("Cedula");
 		criterios.add("Telefono");
 		criterios.add("Genero");
+		criterios.add("Rango Fechas Nacimiento");
 		return criterios;
 	}
 }
